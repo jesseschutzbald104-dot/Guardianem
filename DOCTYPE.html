@@ -2,88 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nintendo DS Arcade</title>
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .menu-container {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        button {
-            background-color: #333;
-            color: white;
-            border: 1px solid #555;
-            padding: 10px 15px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        button:hover {
-            background-color: #555;
-        }
-        .emulator-container {
-            width: 640px;
-            height: 480px;
-            max-width: 100%;
-            background-color: #000;
-        }
-    </style>
+    <title>Nintendogs</title>
 </head>
 <body>
 
-    <div class="menu-container">
-        <h2>Select a Game to Load:</h2>
-        <!-- Game Selection Buttons -->
-        <button onclick="loadGame('games/Nintendogs - Dachshund & Friends (USA).zip')">Nintendogs</button>
-        <button onclick="loadGame('games/Call of Duty_ World at War.zip')">COD: World at War</button>
-        <button onclick="loadGame('games/Call of Duty_ Modern Warfare 3 - Defiance.zip')">COD: MW3 Defiance</button>
-        <button onclick="loadGame('games/Call of Duty 4 - Modern Warfare (USA).zip')">COD 4: Modern Warfare</button>
-        <button onclick="loadGame('games/Call of Duty - Black Ops (USA).zip')">COD: Black Ops</button>
-        <button onclick="loadGame('games/5410 - House M.D. - The Official Game (E).zip')">House M.D.</button>
-    </div>
-
-    <!-- Emulator Window Container -->
-    <div class="emulator-container">
+    <div style="width:640px;height:480px;max-width:100%">
         <div id="game"></div>
     </div>
 
-    <!-- EmulatorJS Engine Configurator -->
     <script type="text/javascript">
-        function loadGame(romPath) {
-            // Clear out any running instance first
-            document.getElementById('game').innerHTML = '';
-            
-            // Set up config
-            EJS_player = '#game';
-            EJS_core = 'nds';
-            EJS_gameUrl = romPath;
-            EJS_pathtodata = 'data/';
-            
-            // Optional: If you download a BIOS zip later, uncomment the line below
-            // EJS_biosUrl = 'bios/nds_bios.zip'; 
-
-            // Inject the loader script dynamically to kickstart the engine
-            let loader = document.createElement('script');
-            loader.src = 'data/loader.js';
-            document.body.appendChild(loader);
-        }
-
-        // Auto-load the first game when page opens
-        window.onload = function() {
-            loadGame('games/Nintendogs - Dachshund & Friends (USA).zip');
-        };
+        EJS_player = '#game';
+        EJS_core = 'nds';
+        EJS_gameUrl = 'YOUR_GAME_LINK_HERE';
+        
+        // This tells the emulator to just look inside your own GitHub folder!
+        EJS_pathtodata = 'data/';
     </script>
+    <script src="data/loader.js"></script>
 
 </body>
 </html>
